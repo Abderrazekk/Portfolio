@@ -1,91 +1,126 @@
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Terminal from "@/components/ui/Terminal";
+
+const terminalEntries = [
+  {
+    cmd: "whoami",
+    out: "abderazek_benhadjmbarek",
+    outClass: "text-accent-emerald font-semibold",
+  },
+  {
+    cmd: "current_education",
+    out: "TEK-UP · Eng. Data Science & AI (2026-2028)",
+    outClass: "text-accent-cyan",
+  },
+  {
+    cmd: "core_focus",
+    out: "Full Stack (MERN) · Flutter · Applied AI\nRAG · LLaMA 3 · Computer Vision · Docker",
+    outClass: "text-accent-purple",
+  },
+  {
+    cmd: "location",
+    out: "Ariana, Tunisia (Available for Remote)",
+    outClass: "text-text-primary",
+  },
+  {
+    cmd: "status",
+    out: "● open to new opportunities",
+    outClass: "text-accent-emerald",
+  },
+];
+
+const quickInfo = [
+  { icon: "🎓", label: "TEK-UP · Eng. Data Science & AI" },
+  { icon: "🏛️", label: "FSB · Master's Computer Science" },
+  { icon: "📍", label: "Ariana, Tunisia · Open to Remote" },
+  { icon: "🌐", label: "English & French (Fluent), Arabic" },
+  { icon: "📜", label: "DataCamp & NVIDIA AI Certified" },
+  { icon: "⚡", label: "Full Stack (MERN) + Flutter" },
+];
+
 export default function About() {
   return (
-    <section id="about" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-accent-cyan font-mono text-sm tracking-wider uppercase">
-            About Me
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-2">
-            Passionate About{" "}
-            <span className="gradient-text">Data &amp; AI</span>
-          </h2>
-        </div>
+    <section id="about" className="relative py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeading
+          eyebrow="About Me"
+          title={
+            <>
+              Passionate About{" "}
+              <span className="gradient-text gradient-text-animated">
+                Data &amp; AI
+              </span>
+            </>
+          }
+        />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Profile visual */}
-          <div className="relative flex justify-center">
-            <div className="w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-accent-cyan/20 to-accent-purple/20 border border-border flex items-center justify-center glow-cyan">
-              <div className="text-center p-8">
-                {/* Terminal-style */}
-                <div className="bg-background rounded-xl p-6 font-mono text-sm text-left border border-border">
-                  <div className="flex gap-2 mb-4">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                  </div>
-                  <p className="text-text-secondary">
-                    <span className="text-accent-cyan">$</span> whoami
-                  </p>
-                  <p className="text-accent-emerald mt-1">
-                    data_scientist_ai_engineer
-                  </p>
-                  <p className="text-text-secondary mt-3">
-                    <span className="text-accent-cyan">$</span> cat skills.txt
-                  </p>
-                  <p className="text-accent-purple mt-1">
-                    ML · DL · NLP · CV
-                  </p>
-                  <p className="text-accent-purple">
-                    Python · SQL · Cloud
-                  </p>
-                  <p className="text-text-secondary mt-3">
-                    <span className="text-accent-cyan">$</span>{" "}
-                    <span className="animate-pulse">▊</span>
-                  </p>
-                </div>
-              </div>
+        <div className="mt-16 grid items-center gap-12 md:grid-cols-2">
+          {/* Terminal visual */}
+          <Reveal dir="left">
+            <div className="group relative">
+              <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-accent-cyan/20 via-transparent to-accent-purple/20 opacity-60 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
+              <Terminal entries={terminalEntries} />
             </div>
-          </div>
+          </Reveal>
 
           {/* Text content */}
           <div className="space-y-6">
-            <p className="text-text-secondary leading-relaxed text-lg">
-              I&apos;m a Data Scientist and AI Engineer with a passion for
-              leveraging machine learning and artificial intelligence to solve
-              real-world problems. With expertise spanning statistical analysis,
-              deep learning, and MLOps, I deliver end-to-end data solutions.
-            </p>
-            <p className="text-text-secondary leading-relaxed">
-              My journey began with a fascination for patterns in data and has
-              evolved into building production-grade AI systems. I specialize in
-              NLP, Computer Vision, and Predictive Analytics, working with
-              cross-functional teams to turn data into strategic assets.
-            </p>
-            <p className="text-text-secondary leading-relaxed">
-              When I&apos;m not training models or optimizing pipelines, you&apos;ll
-              find me contributing to open-source projects, writing technical
-              articles, and mentoring aspiring data scientists.
-            </p>
+            <Reveal delay={100}>
+              <p className="text-lg leading-relaxed text-text-secondary">
+                I&apos;m a{" "}
+                <span className="font-semibold text-text-primary">
+                  Data Science &amp; AI Engineering student at TEK-UP University
+                </span>{" "}
+                with proven experience in full-stack web and mobile development.
+                I bridge the gap between robust software engineering and applied
+                artificial intelligence.
+              </p>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className="leading-relaxed text-text-secondary">
+                My academic journey is anchored by an{" "}
+                <span className="text-text-primary">
+                  Engineering Degree in Data Science &amp; AI
+                </span>{" "}
+                at TEK-UP and a{" "}
+                <span className="text-text-primary">
+                  Master&apos;s &amp; Licence in Computer Science
+                </span>{" "}
+                from the Faculty of Sciences of Bizerte. Concurrently, I build
+                production-ready systems using the{" "}
+                <span className="text-accent-cyan">MERN stack</span> (React,
+                Node.js, Express, MongoDB), mobile apps with{" "}
+                <span className="text-accent-cyan">Flutter</span>, and deploy
+                applied AI workflows with{" "}
+                <span className="text-accent-purple">
+                  LLaMA 3, Groq API, and RAG
+                </span>
+                .
+              </p>
+            </Reveal>
+            <Reveal delay={220}>
+              <p className="leading-relaxed text-text-secondary">
+                Whether building sovereign RAG knowledge simulators for public
+                administration, developing laboratory ERP solutions, or
+                delivering client e-commerce platforms, I am dedicated to
+                writing clean, scalable code and delivering measurable impact.
+              </p>
+            </Reveal>
 
             {/* Quick info */}
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              {[
-                { icon: "🎓", label: "MSc in Data Science" },
-                { icon: "📍", label: "Open to Remote" },
-                { icon: "🔬", label: "Published Researcher" },
-                { icon: "🏆", label: "Kaggle Expert" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="flex items-center gap-3 bg-surface rounded-lg p-3 border border-border"
-                >
-                  <span className="text-xl">{item.icon}</span>
-                  <span className="text-sm text-text-secondary">
-                    {item.label}
-                  </span>
-                </div>
+            <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
+              {quickInfo.map((item, i) => (
+                <Reveal key={item.label} delay={i * 60} dir="scale">
+                  <div className="group flex h-full items-center gap-3 rounded-xl border border-border/60 bg-surface/50 p-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-cyan/40 hover:bg-surface">
+                    <span className="text-xl transition-transform duration-300 group-hover:scale-110">
+                      {item.icon}
+                    </span>
+                    <span className="text-xs text-text-secondary sm:text-sm">
+                      {item.label}
+                    </span>
+                  </div>
+                </Reveal>
               ))}
             </div>
           </div>

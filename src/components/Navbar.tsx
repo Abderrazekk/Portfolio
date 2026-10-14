@@ -3,105 +3,165 @@
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const sections = navLinks
+      .map((l) => document.getElementById(l.id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border"
-          : "bg-transparent"
+          ? "glass border-b border-border/70 py-2 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.8)]"
+          : "border-b border-transparent py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent-cyan to-accent-purple flex items-center justify-center font-bold text-background text-lg">
-            DS
+        <a href="#home" className="group flex items-center gap-3">
+          <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-accent-cyan via-accent-blue to-accent-purple text-lg font-bold text-background shadow-glow-cyan transition-transform duration-500 group-hover:rotate-6 group-hover:scale-105">
+            AB
+            <span className="absolute inset-0 rounded-xl ring-1 ring-white/20" />
           </div>
-          <span className="font-semibold text-lg hidden sm:block">
-            <span className="gradient-text">Data</span>
-            <span className="text-text-secondary">.scientist</span>
+          <span className="hidden text-lg font-semibold sm:block">
+            <span className="gradient-text gradient-text-animated">Abderazek</span>
+            <span className="text-text-secondary">.ai</span>
           </span>
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-text-secondary hover:text-accent-cyan transition-colors duration-200 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent-cyan after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {link.label}
-            </a>
-          ))}
+        <div className="hidden items-center gap-1 rounded-full border border-border/60 bg-surface/40 p-1 backdrop-blur-md md:flex">
+          {navLinks.map((link) => {
+            const isActive = active === link.id;
+            return (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={`relative rounded-full px-4 py-2 text-sm transition-colors duration-300 ${
+                  isActive
+                    ? "text-text-primary"
+                    : "text-text-secondary hover:text-text-primary"
+                }`}
+              >
+                {isActive && (
+                  <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-accent-cyan/20 to-accent-purple/20 ring-1 ring-accent-cyan/30" />
+                )}
+                {link.label}
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Resume */}
+        <div className="flex items-center gap-3">
           <a
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg border border-accent-cyan text-accent-cyan text-sm hover:bg-accent-cyan/10 transition-all duration-200"
+            className="shine group hidden items-center gap-2 rounded-full border border-accent-cyan/40 px-5 py-2 text-sm font-medium text-accent-cyan transition-all duration-300 hover:border-accent-cyan hover:bg-accent-cyan/10 hover:shadow-glow-cyan md:inline-flex"
           >
             Resume
+            <svg
+              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 4v12m0 0l-4-4m4 4l4-4M5 20h14"
+              />
+            </svg>
           </a>
-        </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-text-primary p-2"
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            className="relative flex h-10 w-10 items-center justify-center rounded-lg border border-border/70 bg-surface/50 text-text-primary md:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
-            {mobileOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
+            <span className="relative block h-4 w-5">
+              <span
+                className={`absolute left-0 h-0.5 w-5 rounded bg-current transition-all duration-300 ${
+                  mobileOpen ? "top-2 rotate-45" : "top-0"
+                }`}
               />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
+              <span
+                className={`absolute left-0 top-2 h-0.5 w-5 rounded bg-current transition-all duration-300 ${
+                  mobileOpen ? "opacity-0" : "opacity-100"
+                }`}
               />
-            )}
-          </svg>
-        </button>
+              <span
+                className={`absolute left-0 h-0.5 w-5 rounded bg-current transition-all duration-300 ${
+                  mobileOpen ? "top-2 -rotate-45" : "top-4"
+                }`}
+              />
+            </span>
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-surface/95 backdrop-blur-xl border-b border-border px-6 py-4 space-y-3">
-          {navLinks.map((link) => (
+      <div
+        className={`overflow-hidden transition-all duration-500 md:hidden ${
+          mobileOpen ? "max-h-[26rem] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="glass mt-2 space-y-1 border-t border-border/60 px-6 py-4">
+          {navLinks.map((link, i) => (
             <a
-              key={link.href}
-              href={link.href}
+              key={link.id}
+              href={`#${link.id}`}
               onClick={() => setMobileOpen(false)}
-              className="block text-text-secondary hover:text-accent-cyan transition-colors py-2"
+              style={{ transitionDelay: mobileOpen ? `${i * 40}ms` : "0ms" }}
+              className={`block rounded-lg px-4 py-3 text-sm transition-all duration-300 ${
+                active === link.id
+                  ? "bg-accent-cyan/10 text-accent-cyan"
+                  : "text-text-secondary hover:bg-surface-light/60 hover:text-text-primary"
+              }`}
             >
               {link.label}
             </a>
@@ -111,12 +171,12 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}
-            className="inline-block mt-2 px-4 py-2 rounded-lg border border-accent-cyan text-accent-cyan text-sm hover:bg-accent-cyan/10 transition-all duration-200"
+            className="mt-2 block rounded-lg bg-gradient-to-r from-accent-cyan to-accent-purple px-4 py-3 text-center text-sm font-semibold text-background"
           >
-            Resume
+            Download Resume
           </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

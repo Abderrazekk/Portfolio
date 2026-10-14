@@ -1,147 +1,184 @@
+import Marquee from "@/components/ui/Marquee";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
+import SkillBar from "@/components/ui/SkillBar";
+
 const skillCategories = [
   {
-    title: "Machine Learning",
-    icon: "🧠",
-    color: "accent-cyan",
+    title: "Applied AI & GenAI",
+    icon: "🤖",
+    gradient: "from-accent-purple to-accent-pink",
+    glow: "hover:border-accent-purple/40",
     skills: [
-      { name: "Scikit-learn", level: 95 },
-      { name: "XGBoost / LightGBM", level: 90 },
-      { name: "Feature Engineering", level: 92 },
-      { name: "Model Optimization", level: 88 },
+      { name: "LLaMA 3 / Groq API / Ollama", level: 92 },
+      { name: "RAG & LlamaIndex Pipelines", level: 90 },
+      { name: "ChromaDB & Vector Search", level: 88 },
+      { name: "PyTorch & HuggingFace", level: 85 },
     ],
   },
   {
-    title: "Deep Learning",
-    icon: "🔮",
-    color: "accent-purple",
+    title: "Full Stack Web (MERN)",
+    icon: "🌐",
+    gradient: "from-accent-cyan to-accent-blue",
+    glow: "hover:border-accent-cyan/40",
     skills: [
-      { name: "PyTorch", level: 92 },
-      { name: "TensorFlow / Keras", level: 88 },
-      { name: "Transformers (HuggingFace)", level: 85 },
-      { name: "Computer Vision (CNNs)", level: 87 },
+      { name: "React.js / Vite / TailwindCSS", level: 95 },
+      { name: "Node.js & Express.js", level: 92 },
+      { name: "Redux Toolkit & i18n", level: 90 },
+      { name: "Secure REST APIs & JWT", level: 94 },
     ],
   },
   {
-    title: "Data Engineering",
+    title: "Mobile Development",
+    icon: "📱",
+    gradient: "from-accent-emerald to-accent-cyan",
+    glow: "hover:border-accent-emerald/40",
+    skills: [
+      { name: "Flutter & Dart", level: 90 },
+      { name: "Cross-Platform UI/UX", level: 88 },
+      { name: "OpenStreetMap & Geo Services", level: 85 },
+      { name: "Real-Time Chat & State", level: 88 },
+    ],
+  },
+  {
+    title: "Programming Languages",
+    icon: "💻",
+    gradient: "from-accent-cyan to-accent-emerald",
+    glow: "hover:border-accent-cyan/40",
+    skills: [
+      { name: "Python", level: 94 },
+      { name: "JavaScript (ES6+) & TypeScript", level: 92 },
+      { name: "Dart", level: 88 },
+      { name: "C / Java / PHP / Kotlin", level: 82 },
+    ],
+  },
+  {
+    title: "Databases & Storage",
+    icon: "🗄️",
+    gradient: "from-accent-purple to-accent-blue",
+    glow: "hover:border-accent-purple/40",
+    skills: [
+      { name: "MongoDB (Mongoose / Aggregations)", level: 92 },
+      { name: "MySQL / Relational DBs", level: 85 },
+      { name: "Cloudinary (Media Management)", level: 90 },
+      { name: "Data Modeling & Architecture", level: 88 },
+    ],
+  },
+  {
+    title: "DevOps & Workflows",
     icon: "⚙️",
-    color: "accent-emerald",
+    gradient: "from-accent-emerald to-accent-purple",
+    glow: "hover:border-accent-emerald/40",
     skills: [
-      { name: "Python / Pandas / NumPy", level: 96 },
-      { name: "SQL / PostgreSQL", level: 90 },
-      { name: "Apache Spark", level: 80 },
-      { name: "ETL / Data Pipelines", level: 85 },
-    ],
-  },
-  {
-    title: "MLOps & Cloud",
-    icon: "☁️",
-    color: "accent-cyan",
-    skills: [
-      { name: "Docker / Kubernetes", level: 82 },
-      { name: "AWS / GCP / Azure", level: 85 },
-      { name: "MLflow / Weights & Biases", level: 88 },
-      { name: "CI/CD for ML", level: 80 },
-    ],
-  },
-  {
-    title: "NLP & GenAI",
-    icon: "💬",
-    color: "accent-purple",
-    skills: [
-      { name: "LLMs / RAG", level: 90 },
-      { name: "LangChain / LlamaIndex", level: 85 },
-      { name: "Text Classification / NER", level: 88 },
-      { name: "Prompt Engineering", level: 92 },
-    ],
-  },
-  {
-    title: "Visualization & BI",
-    icon: "📊",
-    color: "accent-emerald",
-    skills: [
-      { name: "Matplotlib / Seaborn", level: 92 },
-      { name: "Plotly / Dash", level: 85 },
-      { name: "Tableau / Power BI", level: 80 },
-      { name: "Streamlit", level: 88 },
+      { name: "Docker Containerization", level: 88 },
+      { name: "Nginx Reverse Proxy", level: 82 },
+      { name: "Git & GitHub Collaboration", level: 92 },
+      { name: "Postman, Linux & Scrum", level: 90 },
     ],
   },
 ];
 
+const toolsRowOne = [
+  "Python",
+  "React.js",
+  "Flutter",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "LLaMA 3",
+  "Groq API",
+  "PyTorch",
+  "Docker",
+  "TailwindCSS",
+  "TypeScript",
+];
+
+const toolsRowTwo = [
+  "JavaScript",
+  "Dart",
+  "ChromaDB",
+  "LlamaIndex",
+  "MySQL",
+  "Nginx",
+  "Git",
+  "Cloudinary",
+  "Postman",
+  "Streamlit",
+  "Linux",
+  "Figma",
+];
+
+function ToolChip({ label }: { label: string }) {
+  return (
+    <span className="mx-2 inline-flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-surface/60 px-4 py-2 text-sm text-text-secondary transition-colors duration-300 hover:border-accent-cyan/40 hover:text-accent-cyan">
+      <span className="h-1.5 w-1.5 rounded-full bg-accent-cyan/70" />
+      {label}
+    </span>
+  );
+}
+
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-surface/30 relative">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-accent-cyan font-mono text-sm tracking-wider uppercase">
-            Technical Expertise
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-2">
-            Skills &amp; <span className="gradient-text">Technologies</span>
-          </h2>
-          <p className="text-text-secondary mt-4 max-w-2xl mx-auto">
-            A comprehensive toolkit spanning the full data science and AI lifecycle
-          </p>
-        </div>
+    <section id="skills" className="relative py-24 md:py-32">
+      <div className="absolute inset-0 -z-10 bg-dots opacity-[0.35] mask-fade-y" />
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeading
+          eyebrow="Technical Expertise"
+          title={
+            <>
+              Skills &amp;{" "}
+              <span className="gradient-text gradient-text-animated">
+                Technologies
+              </span>
+            </>
+          }
+          description="A comprehensive technical toolkit spanning Applied AI, Full-Stack Web, Cross-Platform Mobile, and Cloud/DevOps"
+        />
 
         {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category) => (
-            <div
-              key={category.title}
-              className="bg-surface rounded-2xl p-6 border border-border hover:border-accent-cyan/30 transition-all duration-300 group"
-            >
-              {/* Category header */}
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-2xl">{category.icon}</span>
-                <h3 className="text-lg font-semibold text-text-primary">
-                  {category.title}
-                </h3>
-              </div>
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {skillCategories.map((category, i) => (
+            <Reveal key={category.title} delay={i * 70} dir="scale">
+              <div
+                className={`spotlight group h-full rounded-2xl border border-border/60 bg-surface/50 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${category.glow}`}
+              >
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-background/70 text-2xl ring-1 ring-border transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                    {category.icon}
+                  </span>
+                  <h3 className="text-lg font-semibold text-text-primary">
+                    {category.title}
+                  </h3>
+                </div>
 
-              {/* Skill bars */}
-              <div className="space-y-4">
-                {category.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between text-sm mb-1.5">
-                      <span className="text-text-secondary">{skill.name}</span>
-                      <span className="text-text-secondary font-mono">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="h-2 bg-background rounded-full overflow-hidden">
-                      <div
-                        className={`h-full rounded-full bg-gradient-to-r ${
-                          category.color === "accent-cyan"
-                            ? "from-accent-cyan to-accent-cyan/60"
-                            : category.color === "accent-purple"
-                            ? "from-accent-purple to-accent-purple/60"
-                            : "from-accent-emerald to-accent-emerald/60"
-                        } transition-all duration-1000`}
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
+                <div className="space-y-4">
+                  {category.skills.map((skill, j) => (
+                    <SkillBar
+                      key={skill.name}
+                      name={skill.name}
+                      level={skill.level}
+                      gradient={category.gradient}
+                      delay={j * 120}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        {/* Tools ticker */}
-        <div className="mt-16 flex flex-wrap justify-center gap-3">
-          {[
-            "Python", "R", "SQL", "TensorFlow", "PyTorch", "Spark",
-            "Docker", "Git", "Linux", "Jupyter", "VS Code", "AWS",
-            "GCP", "MongoDB", "Redis", "FastAPI", "Flask", "Airflow",
-          ].map((tool) => (
-            <span
-              key={tool}
-              className="px-4 py-2 rounded-full bg-surface border border-border text-sm text-text-secondary hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-200 cursor-default"
-            >
-              {tool}
-            </span>
-          ))}
+        {/* Tools marquee */}
+        <div className="mt-16 space-y-4">
+          <Marquee>
+            {toolsRowOne.map((tool) => (
+              <ToolChip key={tool} label={tool} />
+            ))}
+          </Marquee>
+          <Marquee reverse>
+            {toolsRowTwo.map((tool) => (
+              <ToolChip key={tool} label={tool} />
+            ))}
+          </Marquee>
         </div>
       </div>
     </section>
