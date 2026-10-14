@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Data Science & AI Engineer Portfolio
 
-## Getting Started
+A modern, responsive portfolio website built for a **Data Science & AI Engineer** showcasing expertise in Machine Learning, Deep Learning, Natural Language Processing (NLP), Computer Vision (CV), and MLOps.
 
-First, run the development server:
+Built with **Next.js 16 (Turbopack)**, **React 19**, **Tailwind CSS v4**, and **TypeScript**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **⚡ Modern Tech Stack:** Next.js 16 with Turbopack, React 19, and Tailwind CSS v4.
+- **🎨 Sleek Dark UI:** Futuristic AI-themed dark palette with glow effects and smooth transitions.
+- **🧠 Showcase Sections:**
+  - **Hero:** Impactful introduction, key stats, and quick CTA buttons.
+  - **About:** Terminal-style bio, background story, and key highlights.
+  - **Skills & Technologies:** Categorized skill levels with animated progress bars (ML, DL, Data Engineering, MLOps, NLP & GenAI, BI).
+  - **Featured Projects:** Interactive category filtering (ML, DL, NLP, GenAI, CV) with metrics, tech tags, and links.
+  - **Experience Timeline:** Detailed career journey with achievements and tech stacks.
+  - **Contact:** Functional contact form and social channels (GitHub, LinkedIn, Kaggle, Twitter/X).
+- **📱 Fully Responsive:** Optimized for mobile, tablet, and desktop viewports.
+- **🚀 Performance & SEO:** Static site generation (SSG), self-hosted Google Fonts (`Inter` & `JetBrains Mono`), and OpenGraph metadata.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router + Turbopack)
+- **Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Icons & Graphics:** Custom SVG icons and CSS-based ambient glow animations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Getting Started
 
-## Deploy on Vercel
+### Prerequisites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Node.js 18.18+ or 20+ installed
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Abderrazekk/Portfolio.git
+   cd Portfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 📦 Scripts
+
+- `npm run dev`: Starts the Next.js development server with Turbopack.
+- `npm run build`: Creates an optimized production build.
+- `npm run start`: Runs the production server.
+- `npm run lint`: Runs ESLint to check for code issues.
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
