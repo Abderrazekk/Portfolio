@@ -58,6 +58,46 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
+        <a
+          href="#home"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:border focus:border-accent-cyan/50 focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:text-accent-cyan"
+        >
+          Skip to content
+        </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Abderazek Benhadjmbarek",
+              jobTitle: "Full Stack & AI Engineer",
+              email: "mailto:abderazekbelhadjmbarek@gmail.com",
+              telephone: "+216 54 999 718",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Ariana",
+                addressCountry: "TN",
+              },
+              alumniOf: [
+                { "@type": "CollegeOrUniversity", name: "TEK-UP University" },
+                { "@type": "CollegeOrUniversity", name: "Faculty of Sciences of Bizerte" },
+              ],
+              knowsAbout: [
+                "Data Science",
+                "Artificial Intelligence",
+                "Retrieval-Augmented Generation",
+                "MERN Stack",
+                "Flutter",
+                "Docker",
+              ],
+              sameAs: [
+                "https://github.com/Abderrazekk",
+                "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3",
+              ],
+            }),
+          }}
+        />
         <div
           aria-hidden
           className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,var(--color-background-2),var(--color-background)_60%)]"

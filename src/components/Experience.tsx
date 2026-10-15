@@ -1,13 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import {
+  ArrowUpRight,
+  BarChart3,
+  Brain,
+  Briefcase,
+  Code,
+  Globe,
+  GraduationCap,
+  Landmark,
+  Link2,
+  MapPin,
+  RefreshCw,
+  ScrollText,
+  ShoppingCart,
+  Smartphone,
+  Target,
+  Zap,
+} from "@/components/ui/Icon";
 
 const experiences = [
   {
     role: "Freelance Full Stack Developer",
     company: "Shopina",
+    initials: "SH",
     period: "Jan 2026 – Mar 2026",
     type: "Client Project",
     location: "Tunisia · Remote",
@@ -22,10 +41,12 @@ const experiences = [
       "Maintained and optimized the live platform for performance",
     ],
     tech: ["React.js", "Vite", "TailwindCSS", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "JWT", "Docker", "Nginx", "Cloudinary", "REST API", "i18n"],
+    gradient: "from-accent-emerald to-accent-cyan",
   },
   {
     role: "Mobile & AI Developer — Final Year Internship",
     company: "Prologic Tunisia",
+    initials: "PT",
     period: "Feb 2025 – May 2025",
     type: "Internship",
     location: "Charguia 2, Tunis, Tunisia",
@@ -39,10 +60,12 @@ const experiences = [
       "Conducted deployment, user acceptance testing, OpenStreetMap routing, UX refinements, and performance tuning",
     ],
     tech: ["Flutter", "Dart", "Node.js", "Express", "MongoDB", "JWT", "REST API", "OpenStreetMap", "Python", "Groq", "Ollama", "LLaMA", "Docker"],
+    gradient: "from-accent-cyan to-accent-purple",
   },
   {
     role: "Web Developer Intern",
     company: "Real Estate Agency",
+    initials: "RE",
     period: "Jul 2024 – Aug 2024",
     type: "Internship",
     location: "Ariana, Tunisia",
@@ -56,6 +79,7 @@ const experiences = [
       "Trained the client's internal team on property catalog and content management workflows",
     ],
     tech: ["React.js", "JavaScript", "TailwindCSS", "Node.js", "Express.js", "JWT", "REST API", "MongoDB", "Docker"],
+    gradient: "from-accent-purple to-accent-pink",
   },
 ];
 
@@ -95,34 +119,48 @@ const education = [
 ];
 
 const certifications = [
-  { title: "AI Engineer for Data Scientists Associate", issuer: "DataCamp", icon: "🧠", badge: "AI & ML", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1779206907574/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
-  { title: "AI Engineer for Developers Associate", issuer: "DataCamp", icon: "💻", badge: "Applied AI", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1775912629937/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
-  { title: "Mobile Developer - Internship", issuer: "Prologic Tunisie", icon: "📱", badge: "Mobile", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1755775134891/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
-  { title: "Getting Started with AI on Jetson Nano", issuer: "NVIDIA", icon: "⚡", badge: "Edge AI", link: "https://learn.nvidia.com/certificates?id=f29051a2ffc54b28b94690e7611d194c" },
-  { title: "Data Science", issuer: "Cisco Networking Academy", icon: "📊", badge: "Data Science", link: "https://www.credly.com/badges/e16e1f75-dd55-4cd8-9c52-4fa2edac1581/public_url" },
-  { title: "Scrum Fundamentals", issuer: "SCRUMstudy", icon: "🔄", badge: "Agile", link: "https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumFundamentalsCertified-BelhadjmbarekAbderazek-1046869.pdf" },
-  { title: "E-Commerce", issuer: "TuniTech", icon: "🛒", badge: "Web Systems", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1709983931327/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
-  { title: "Full Stack Development", issuer: "ATAST", icon: "🌐", badge: "Full Stack", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1707661550514/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
-  { title: "Effective Leadership", issuer: "HP", icon: "🎯", badge: "Leadership", link: "https://www.life-global.org/certificate/d2bd09c5-f420-4491-bc1d-663440c6dfa5" },
+  { title: "AI Engineer for Data Scientists Associate", issuer: "DataCamp", icon: Brain, tint: "text-accent-purple", badge: "AI & ML", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1779206907574/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "AI Engineer for Developers Associate", issuer: "DataCamp", icon: Code, tint: "text-accent-cyan", badge: "Applied AI", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1775912629937/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "Mobile Developer - Internship", issuer: "Prologic Tunisie", icon: Smartphone, tint: "text-accent-emerald", badge: "Mobile", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1755775134891/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "Getting Started with AI on Jetson Nano", issuer: "NVIDIA", icon: Zap, tint: "text-accent-cyan", badge: "Edge AI", link: "https://learn.nvidia.com/certificates?id=f29051a2ffc54b28b94690e7611d194c" },
+  { title: "Data Science", issuer: "Cisco Networking Academy", icon: BarChart3, tint: "text-accent-blue", badge: "Data Science", link: "https://www.credly.com/badges/e16e1f75-dd55-4cd8-9c52-4fa2edac1581/public_url" },
+  { title: "Scrum Fundamentals", issuer: "SCRUMstudy", icon: RefreshCw, tint: "text-accent-purple", badge: "Agile", link: "https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumFundamentalsCertified-BelhadjmbarekAbderazek-1046869.pdf" },
+  { title: "E-Commerce", issuer: "TuniTech", icon: ShoppingCart, tint: "text-accent-emerald", badge: "Web Systems", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1709983931327/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "Full Stack Development", issuer: "ATAST", icon: Globe, tint: "text-accent-cyan", badge: "Full Stack", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1707661550514/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "Effective Leadership", issuer: "HP", icon: Target, tint: "text-accent-pink", badge: "Leadership", link: "https://www.life-global.org/certificate/d2bd09c5-f420-4491-bc1d-663440c6dfa5" },
 ];
 
 const tabs = [
-  { key: "experience", label: "Work Experience", icon: "💼", count: experiences.length },
-  { key: "education", label: "Education", icon: "🎓", count: education.length },
-  { key: "certifications", label: "Certifications", icon: "📜", count: certifications.length },
+  { key: "experience", label: "Experience", icon: Briefcase, count: experiences.length },
+  { key: "education", label: "Education", icon: GraduationCap, count: education.length },
+  { key: "certifications", label: "Certifications", icon: ScrollText, count: certifications.length },
 ] as const;
 
 type TabKey = (typeof tabs)[number]["key"];
 
 export default function Experience() {
   const [activeTab, setActiveTab] = useState<TabKey>("experience");
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
+  const onTabKeyDown = (e: ReactKeyboardEvent) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    const index = tabs.findIndex((t) => t.key === activeTab);
+    const next =
+      e.key === "ArrowRight"
+        ? tabs[(index + 1) % tabs.length]
+        : tabs[(index - 1 + tabs.length) % tabs.length];
+    setActiveTab(next.key);
+    tabRefs.current[next.key]?.focus();
+  };
 
   return (
-    <section id="experience" className="relative py-24 md:py-32">
-      <div className="absolute inset-0 -z-10 bg-dots opacity-[0.3] mask-fade-y" />
+    <section id="experience" className="section">
+      <div className="absolute inset-0 -z-10 bg-dots opacity-[0.25] mask-fade-y" />
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeading
           eyebrow="Trajectory"
+          index="04 / 05"
           title={
             <>
               Experience &amp;{" "}
@@ -131,40 +169,65 @@ export default function Experience() {
               </span>
             </>
           }
-          description="Practical industry experience, academic excellence in Data Science & AI, and verified certifications"
+          description="Practical industry experience, academic excellence in Data Science & AI, and verified certifications."
         />
 
         {/* Tabs */}
         <Reveal delay={160}>
-          <div className="mt-8 flex flex-wrap justify-center gap-2 rounded-2xl border border-border/60 bg-surface/40 p-1.5 backdrop-blur-md sm:rounded-full sm:w-fit sm:mx-auto">
-            {tabs.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
-                  activeTab === tab.key
-                    ? "bg-gradient-to-r from-accent-cyan to-accent-purple text-background shadow-glow-cyan"
-                    : "text-text-secondary hover:text-text-primary"
-                }`}
-              >
-                <span>{tab.icon}</span>
-                {tab.label}
-                <span
-                  className={`rounded-full px-1.5 py-0.5 font-mono text-[10px] ${
-                    activeTab === tab.key
-                      ? "bg-background/25 text-background"
-                      : "bg-surface-light text-text-muted"
+          <div
+            role="tablist"
+            aria-label="Experience, education and certifications"
+            onKeyDown={onTabKeyDown}
+            className="mx-auto mt-10 flex w-fit flex-wrap justify-center gap-1.5 rounded-2xl border border-border/60 bg-surface/40 p-1.5 backdrop-blur-md sm:rounded-full"
+          >
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.key;
+              return (
+                <button
+                  key={tab.key}
+                  ref={(el) => {
+                    tabRefs.current[tab.key] = el;
+                  }}
+                  id={`tab-${tab.key}`}
+                  role="tab"
+                  type="button"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${tab.key}`}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? "bg-gradient-to-r from-accent-cyan to-accent-purple text-background shadow-glow-cyan"
+                      : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
-                  {tab.count}
-                </span>
-              </button>
-            ))}
+                  <span aria-hidden>
+                    <tab.icon className="h-4 w-4" />
+                  </span>
+                  {tab.label}
+                  <span
+                    className={`rounded-full px-1.5 py-0.5 font-mono text-[10px] ${
+                      isActive
+                        ? "bg-background/25 text-background"
+                        : "bg-surface-light text-text-muted"
+                    }`}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </Reveal>
 
         {/* Panels */}
-        <div key={activeTab} className="mt-12 animate-fade-down">
+        <div
+          key={activeTab}
+          id={`panel-${activeTab}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${activeTab}`}
+          className="mt-12 animate-fade-down"
+        >
           {/* WORK */}
           {activeTab === "experience" && (
             <div className="relative">
@@ -179,47 +242,40 @@ export default function Experience() {
                   }`}
                 >
                   <div
-                    className={`absolute top-6 h-4 w-4 rounded-full border-4 border-background bg-accent-cyan shadow-[0_0_14px_var(--color-accent-cyan)] ${
+                    className={`absolute top-7 h-4 w-4 rounded-full border-4 border-background bg-accent-cyan shadow-[0_0_14px_var(--color-accent-cyan)] ${
                       index % 2 === 0
                         ? "left-[-8px] md:left-auto md:right-[-8px]"
                         : "left-[-8px]"
                     }`}
                   />
 
-                  <div className="spotlight group rounded-2xl border border-border/60 bg-surface/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-cyan/40">
-                    <div className="mb-4 flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
-                      <div>
-                        <h3 className="text-lg font-semibold text-text-primary">
+                  <div className="card group p-6">
+                    <div className="mb-5 flex items-start gap-4">
+                      <span
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${exp.gradient} font-mono text-xs font-bold text-background`}
+                      >
+                        {exp.initials}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-base font-semibold leading-snug text-text-primary md:text-lg">
                           {exp.role}
                         </h3>
-                        <p className="font-medium text-accent-cyan">
+                        <p className="mt-0.5 text-sm font-medium text-accent-cyan">
                           {exp.company}
                         </p>
-                        <p className="mt-0.5 text-xs text-text-muted">
-                          📍 {exp.location}
-                        </p>
-                        {exp.link && (
-                          <a
-                            href={exp.link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-accent-emerald transition-colors hover:underline"
-                          >
-                            🔗 {exp.link.label}
-                          </a>
-                        )}
-                      </div>
-                      <div className="flex-shrink-0 sm:text-right">
-                        <span className="rounded-md border border-border bg-surface-light px-2.5 py-1 font-mono text-xs text-text-secondary">
-                          {exp.period}
-                        </span>
-                        <span className="mt-1 block text-xs font-medium text-accent-purple">
-                          {exp.type}
-                        </span>
                       </div>
                     </div>
 
-                    <p className="mb-4 text-sm leading-relaxed text-text-secondary">
+                    <div className="mb-4 flex flex-wrap items-center gap-2">
+                      <span className="chip">{exp.period}</span>
+                      <span className="chip">{exp.type}</span>
+                      <span className="inline-flex items-center gap-1 font-mono text-[11px] text-text-muted">
+                        <MapPin className="h-3.5 w-3.5" />
+                        {exp.location}
+                      </span>
+                    </div>
+
+                    <p className="text-pretty mb-4 text-sm leading-relaxed text-text-secondary">
                       {exp.description}
                     </p>
 
@@ -227,26 +283,34 @@ export default function Experience() {
                       {exp.highlights.map((highlight) => (
                         <li
                           key={highlight}
-                          className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary sm:text-sm"
+                          className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary sm:text-[13px]"
                         >
-                          <span className="mt-0.5 flex-shrink-0 text-accent-emerald">
-                            ▸
-                          </span>
+                          <span className="mt-0.5 flex-shrink-0 text-accent-emerald">▸</span>
                           <span>{highlight}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="flex flex-wrap gap-1.5 border-t border-border/50 pt-3">
+                    <div className="flex flex-wrap gap-1.5 border-t border-border/50 pt-4">
                       {exp.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-md border border-border bg-background/60 px-2 py-0.5 font-mono text-[11px] text-text-secondary"
-                        >
+                        <span key={t} className="chip">
                           {t}
                         </span>
                       ))}
                     </div>
+
+                    {exp.link && (
+                      <a
+                        href={exp.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-accent-emerald transition-colors hover:text-accent-cyan"
+                      >
+                        <Link2 className="h-3.5 w-3.5" />
+                        {exp.link.label}
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    )}
                   </div>
                 </Reveal>
               ))}
@@ -255,25 +319,26 @@ export default function Experience() {
 
           {/* EDUCATION */}
           {activeTab === "education" && (
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-5 md:grid-cols-2">
               {education.map((edu, i) => (
                 <Reveal key={edu.degree} delay={i * 70} dir="scale">
-                  <div className="spotlight group flex h-full flex-col rounded-2xl border border-border/60 bg-surface/60 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-cyan/40">
-                    <div className="mb-3 flex items-start justify-between gap-3">
-                      <span className="rounded-full border border-accent-cyan/20 bg-accent-cyan/10 px-2.5 py-1 font-mono text-xs text-accent-cyan">
+                  <div className="card flex h-full flex-col p-6">
+                    <div className="mb-4 flex items-start justify-between gap-3">
+                      <span className="rounded-full border border-accent-cyan/20 bg-accent-cyan/10 px-2.5 py-1 font-mono text-[11px] text-accent-cyan">
                         {edu.badge}
                       </span>
-                      <span className="font-mono text-xs text-text-muted">
+                      <span className="text-right font-mono text-[11px] text-text-muted">
                         {edu.period}
                       </span>
                     </div>
-                    <h3 className="mb-1 text-lg font-semibold text-text-primary">
+                    <h3 className="text-balance mb-2 text-base font-semibold leading-snug text-text-primary md:text-lg">
                       {edu.degree}
                     </h3>
-                    <p className="mb-3 text-sm font-medium text-accent-purple">
-                      🏛️ {edu.institution}
+                    <p className="mb-3 flex items-center gap-1.5 text-sm font-medium text-accent-purple">
+                      <Landmark className="h-4 w-4 shrink-0" />
+                      {edu.institution}
                     </p>
-                    <p className="mt-auto text-sm leading-relaxed text-text-secondary">
+                    <p className="text-pretty mt-auto text-sm leading-relaxed text-text-secondary">
                       {edu.description}
                     </p>
                   </div>
@@ -284,24 +349,20 @@ export default function Experience() {
 
           {/* CERTIFICATIONS */}
           {activeTab === "certifications" && (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {certifications.map((cert, i) => (
                 <Reveal key={cert.title} delay={i * 50} dir="scale">
-                  <div className="spotlight group flex h-full flex-col justify-between rounded-xl border border-border/60 bg-surface/60 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-cyan/40">
-                    <div>
-                      <div className="mb-3 flex items-center justify-between">
-                        <span className="text-2xl transition-transform duration-300 group-hover:scale-110">
-                          {cert.icon}
-                        </span>
-                        <span className="rounded-full border border-border bg-surface-light px-2 py-0.5 font-mono text-[10px] text-text-secondary">
-                          {cert.badge}
-                        </span>
-                      </div>
-                      <h4 className="line-clamp-2 text-sm font-semibold text-text-primary transition-colors group-hover:text-accent-cyan">
-                        {cert.title}
-                      </h4>
+                  <div className="card flex h-full flex-col p-5">
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-background/70 ring-1 ring-border">
+                        <cert.icon className={`h-5 w-5 ${cert.tint}`} />
+                      </span>
+                      <span className="chip">{cert.badge}</span>
                     </div>
-                    <div className="mt-3 border-t border-border/50 pt-3">
+                    <h4 className="text-balance text-sm font-semibold leading-snug text-text-primary">
+                      {cert.title}
+                    </h4>
+                    <div className="mt-auto border-t border-border/50 pt-3">
                       <p className="text-xs font-medium text-accent-emerald">
                         Issued by {cert.issuer}
                       </p>
@@ -312,7 +373,7 @@ export default function Experience() {
                           rel="noopener noreferrer"
                           className="mt-1.5 inline-flex items-center gap-1 text-xs text-accent-cyan transition-colors hover:underline"
                         >
-                          View Certificate ↗
+                          Verify credential <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
                       )}
                     </div>

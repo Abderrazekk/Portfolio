@@ -1,14 +1,16 @@
 import Marquee from "@/components/ui/Marquee";
+import RadarChart, { type RadarDatum } from "@/components/ui/RadarChart";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SkillBar from "@/components/ui/SkillBar";
+import { Bot, Code, Database, Globe, Settings, Smartphone } from "@/components/ui/Icon";
 
 const skillCategories = [
   {
     title: "Applied AI & GenAI",
-    icon: "🤖",
+    icon: Bot,
+    tint: "text-accent-purple",
     gradient: "from-accent-purple to-accent-pink",
-    glow: "hover:border-accent-purple/40",
     skills: [
       { name: "LLaMA 3 / Groq API / Ollama", level: 92 },
       { name: "RAG & LlamaIndex Pipelines", level: 90 },
@@ -18,9 +20,9 @@ const skillCategories = [
   },
   {
     title: "Full Stack Web (MERN)",
-    icon: "🌐",
+    icon: Globe,
+    tint: "text-accent-cyan",
     gradient: "from-accent-cyan to-accent-blue",
-    glow: "hover:border-accent-cyan/40",
     skills: [
       { name: "React.js / Vite / TailwindCSS", level: 95 },
       { name: "Node.js & Express.js", level: 92 },
@@ -30,9 +32,9 @@ const skillCategories = [
   },
   {
     title: "Mobile Development",
-    icon: "📱",
+    icon: Smartphone,
+    tint: "text-accent-emerald",
     gradient: "from-accent-emerald to-accent-cyan",
-    glow: "hover:border-accent-emerald/40",
     skills: [
       { name: "Flutter & Dart", level: 90 },
       { name: "Cross-Platform UI/UX", level: 88 },
@@ -42,9 +44,9 @@ const skillCategories = [
   },
   {
     title: "Programming Languages",
-    icon: "💻",
+    icon: Code,
+    tint: "text-accent-blue",
     gradient: "from-accent-cyan to-accent-emerald",
-    glow: "hover:border-accent-cyan/40",
     skills: [
       { name: "Python", level: 94 },
       { name: "JavaScript (ES6+) & TypeScript", level: 92 },
@@ -54,9 +56,9 @@ const skillCategories = [
   },
   {
     title: "Databases & Storage",
-    icon: "🗄️",
+    icon: Database,
+    tint: "text-accent-purple",
     gradient: "from-accent-purple to-accent-blue",
-    glow: "hover:border-accent-purple/40",
     skills: [
       { name: "MongoDB (Mongoose / Aggregations)", level: 92 },
       { name: "MySQL / Relational DBs", level: 85 },
@@ -66,9 +68,9 @@ const skillCategories = [
   },
   {
     title: "DevOps & Workflows",
-    icon: "⚙️",
+    icon: Settings,
+    tint: "text-accent-emerald",
     gradient: "from-accent-emerald to-accent-purple",
-    glow: "hover:border-accent-emerald/40",
     skills: [
       { name: "Docker Containerization", level: 88 },
       { name: "Nginx Reverse Proxy", level: 82 },
@@ -76,6 +78,15 @@ const skillCategories = [
       { name: "Postman, Linux & Scrum", level: 90 },
     ],
   },
+];
+
+const radar: RadarDatum[] = [
+  { label: "AI / GenAI", value: 90 },
+  { label: "Web / MERN", value: 94 },
+  { label: "Mobile", value: 88 },
+  { label: "Languages", value: 90 },
+  { label: "Data & DB", value: 89 },
+  { label: "DevOps", value: 87 },
 ];
 
 const toolsRowOne = [
@@ -129,11 +140,12 @@ function ToolChip({ label }: { label: string }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-24 md:py-32">
-      <div className="absolute inset-0 -z-10 bg-dots opacity-[0.35] mask-fade-y" />
+    <section id="skills" className="section">
+      <div className="absolute inset-0 -z-10 bg-dots opacity-[0.3] mask-fade-y" />
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeading
           eyebrow="Technical Expertise"
+          index="02 / 05"
           title={
             <>
               Skills &amp;{" "}
@@ -142,39 +154,68 @@ export default function Skills() {
               </span>
             </>
           }
-          description="A comprehensive technical toolkit spanning Applied AI, Full-Stack Web, Cross-Platform Mobile, and Cloud/DevOps"
+          description="A technical toolkit spanning Applied AI, Full-Stack Web, Cross-Platform Mobile, and Cloud / DevOps."
         />
 
-        {/* Skills Grid */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {skillCategories.map((category, i) => (
-            <Reveal key={category.title} delay={i * 70} dir="scale">
-              <div
-                className={`spotlight group h-full rounded-2xl border border-border/60 bg-surface/50 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${category.glow}`}
-              >
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-background/70 text-2xl ring-1 ring-border transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                    {category.icon}
-                  </span>
-                  <h3 className="text-lg font-semibold text-text-primary">
-                    {category.title}
-                  </h3>
-                </div>
-
-                <div className="space-y-4">
-                  {category.skills.map((skill, j) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                      gradient={category.gradient}
-                      delay={j * 120}
-                    />
-                  ))}
-                </div>
+        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+          {/* Proficiency radar */}
+          <Reveal dir="left">
+            <div className="card ring-gradient p-6 lg:sticky lg:top-28">
+              <div className="mb-2 flex items-center justify-between">
+                <h3 className="text-sm font-semibold text-text-primary">
+                  Proficiency Map
+                </h3>
+                <span className="font-mono text-[10px] tracking-[0.2em] text-text-muted uppercase">
+                  self-assessed
+                </span>
               </div>
-            </Reveal>
-          ))}
+              <RadarChart data={radar} className="mx-auto aspect-square w-full max-w-[22rem]" />
+              <div className="mt-4 grid grid-cols-3 gap-2 border-t border-border/60 pt-4 text-center">
+                {[
+                  { k: "Domains", v: "6" },
+                  { k: "Avg. level", v: "90%" },
+                  { k: "Tools", v: "34+" },
+                ].map((s) => (
+                  <div key={s.k}>
+                    <p className="gradient-text text-lg font-bold">{s.v}</p>
+                    <p className="font-mono text-[10px] tracking-wider text-text-muted uppercase">
+                      {s.k}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Category cards */}
+          <div className="grid gap-5 sm:grid-cols-2 lg:col-span-2">
+            {skillCategories.map((category, i) => (
+              <Reveal key={category.title} delay={i * 70} dir="scale">
+                <div className={`card group h-full p-6`}>
+                  <div className="mb-6 flex items-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-background/70 ring-1 ring-border transition-transform duration-300 group-hover:scale-110">
+                      <category.icon className={`h-5 w-5 ${category.tint}`} />
+                    </span>
+                    <h3 className="text-base font-semibold text-text-primary">
+                      {category.title}
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4">
+                    {category.skills.map((skill, j) => (
+                      <SkillBar
+                        key={skill.name}
+                        name={skill.name}
+                        level={skill.level}
+                        gradient={category.gradient}
+                        delay={j * 120}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         {/* Tools marquee */}

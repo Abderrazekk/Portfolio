@@ -21,8 +21,10 @@ export default function Marquee({
         } hover:[animation-play-state:paused]`}
         style={speed ? { animationDuration: `${speed}s` } : undefined}
       >
-        {children}
-        {children}
+        <div className="flex shrink-0 items-center">{children}</div>
+        <div className="flex shrink-0 items-center" aria-hidden>
+          {children}
+        </div>
       </div>
     </div>
   );

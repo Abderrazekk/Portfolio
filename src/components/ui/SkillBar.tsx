@@ -7,6 +7,8 @@ type SkillBarProps = {
   level: number;
   gradient: string;
   delay?: number;
+  /** Hide the built-in "name — level%" row (useful when a parent renders its own label). */
+  showMeta?: boolean;
 };
 
 export default function SkillBar({
@@ -14,6 +16,7 @@ export default function SkillBar({
   level,
   gradient,
   delay = 0,
+  showMeta = true,
 }: SkillBarProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -36,10 +39,12 @@ export default function SkillBar({
 
   return (
     <div ref={ref}>
-      <div className="mb-1.5 flex items-center justify-between text-sm">
-        <span className="text-text-secondary">{name}</span>
-        <span className="font-mono text-xs text-text-muted">{level}%</span>
-      </div>
+      {showMeta && (
+        <div className="mb-1.5 flex items-center justify-between text-sm">
+          <span className="text-text-secondary">{name}</span>
+          <span className="font-mono text-xs text-text-muted">{level}%</span>
+        </div>
+      )}
       <div className="h-2 overflow-hidden rounded-full bg-background ring-1 ring-border/50">
         <div
           className={`h-full rounded-full bg-gradient-to-r ${gradient} shadow-[0_0_12px_-2px_currentColor]`}

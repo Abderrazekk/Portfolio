@@ -77,6 +77,7 @@ export default function Navbar() {
               <a
                 key={link.id}
                 href={`#${link.id}`}
+                aria-current={isActive ? "true" : undefined}
                 className={`relative rounded-full px-4 py-2 text-sm transition-colors duration-300 ${
                   isActive
                     ? "text-text-primary"
@@ -156,14 +157,18 @@ export default function Navbar() {
               key={link.id}
               href={`#${link.id}`}
               onClick={() => setMobileOpen(false)}
+              aria-current={active === link.id ? "true" : undefined}
               style={{ transitionDelay: mobileOpen ? `${i * 40}ms` : "0ms" }}
-              className={`block rounded-lg px-4 py-3 text-sm transition-all duration-300 ${
+              className={`flex items-center justify-between rounded-lg px-4 py-3 text-sm transition-all duration-300 ${
                 active === link.id
                   ? "bg-accent-cyan/10 text-accent-cyan"
                   : "text-text-secondary hover:bg-surface-light/60 hover:text-text-primary"
               }`}
             >
-              {link.label}
+              <span>{link.label}</span>
+              <span className="font-mono text-[10px] text-text-muted">
+                0{i + 1}
+              </span>
             </a>
           ))}
           <a
