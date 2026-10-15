@@ -91,6 +91,11 @@ const toolsRowOne = [
   "Docker",
   "TailwindCSS",
   "TypeScript",
+  "Redux Toolkit",
+  "JWT",
+  "Java",
+  "PHP",
+  "Kotlin",
 ];
 
 const toolsRowTwo = [
@@ -106,6 +111,11 @@ const toolsRowTwo = [
   "Streamlit",
   "Linux",
   "Figma",
+  "Scrum",
+  "LaTeX",
+  "Excel",
+  "Canva",
+  "Adobe Photoshop",
 ];
 
 function ToolChip({ label }: { label: string }) {

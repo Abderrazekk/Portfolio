@@ -11,15 +11,17 @@ const experiences = [
     period: "Jan 2026 – Mar 2026",
     type: "Client Project",
     location: "Tunisia · Remote",
+    link: { label: "shopina.tn", href: "https://www.shopina.tn" },
     description:
       "Designed, developed, and deployed a production-ready MERN e-commerce platform for an active commercial client, handling end-to-end architecture from frontend UI to Dockerized cloud deployment.",
     highlights: [
       "Built a scalable, multilingual (i18n) storefront with React.js, Vite, TailwindCSS, and Redux Toolkit",
-      "Engineered secure REST APIs with JWT authentication, order workflows, wishlist, and admin management",
+      "Engineered secure REST APIs with JWT authentication, order workflows, wishlist, comments, and admin management",
       "Integrated Cloudinary media hosting, Docker containerization, Nginx reverse proxy, and Google OAuth",
       "Implemented analytics, promotional discount systems, SEO optimization, and dynamic sitemap generation",
+      "Maintained and optimized the live platform for performance",
     ],
-    tech: ["React.js", "Vite", "TailwindCSS", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "Docker", "Nginx", "Cloudinary", "JWT", "i18n"],
+    tech: ["React.js", "Vite", "TailwindCSS", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "JWT", "Docker", "Nginx", "Cloudinary", "REST API", "i18n"],
   },
   {
     role: "Mobile & AI Developer — Final Year Internship",
@@ -27,15 +29,16 @@ const experiences = [
     period: "Feb 2025 – May 2025",
     type: "Internship",
     location: "Charguia 2, Tunis, Tunisia",
+    link: { label: "GitHub · OPM-MOBILE", href: "https://github.com/Abderrazekk/OPM-MOBILE" },
     description:
-      "Conducted requirements analysis and developed an enterprise cross-platform mobile application integrated with applied AI and geospatial services.",
+      "Conducted requirements analysis and functional specification writing, then developed an enterprise cross-platform mobile application integrated with applied AI and geospatial services.",
     highlights: [
       "Developed cross-platform mobile app in Flutter, backed by a high-performance Node.js/Express REST API and MongoDB",
       "Implemented contract creation, site management, support ticketing, notifications, and secure JWT authentication",
       "Integrated applied AI capabilities leveraging Python, Groq API, Ollama, and LLaMA",
       "Conducted deployment, user acceptance testing, OpenStreetMap routing, UX refinements, and performance tuning",
     ],
-    tech: ["Flutter", "Dart", "Node.js", "Express", "MongoDB", "JWT", "OpenStreetMap", "Python", "Groq", "Ollama", "LLaMA", "Docker"],
+    tech: ["Flutter", "Dart", "Node.js", "Express", "MongoDB", "JWT", "REST API", "OpenStreetMap", "Python", "Groq", "Ollama", "LLaMA", "Docker"],
   },
   {
     role: "Web Developer Intern",
@@ -43,6 +46,7 @@ const experiences = [
     period: "Jul 2024 – Aug 2024",
     type: "Internship",
     location: "Ariana, Tunisia",
+    link: { label: "GitHub · RealEstates-Agent", href: "https://github.com/Abderrazekk/RealEstates-Agent" },
     description:
       "Engineered and delivered a responsive real-estate web platform with real-time property listings, advanced filtering, and administrative management.",
     highlights: [
@@ -51,7 +55,7 @@ const experiences = [
       "Optimized SEO, asset loading, and mobile responsiveness to maximize user engagement",
       "Trained the client's internal team on property catalog and content management workflows",
     ],
-    tech: ["React.js", "JavaScript", "TailwindCSS", "Node.js", "Express.js", "JWT", "MongoDB", "Docker"],
+    tech: ["React.js", "JavaScript", "TailwindCSS", "Node.js", "Express.js", "JWT", "REST API", "MongoDB", "Docker"],
   },
 ];
 
@@ -91,14 +95,15 @@ const education = [
 ];
 
 const certifications = [
-  { title: "AI Engineer for Data Scientists Associate", issuer: "DataCamp", icon: "🧠", badge: "AI & ML" },
-  { title: "AI Engineer for Developers Associate", issuer: "DataCamp", icon: "💻", badge: "Applied AI" },
-  { title: "Getting Started with AI on Jetson Nano", issuer: "NVIDIA", icon: "⚡", badge: "Edge AI" },
-  { title: "Data Science", issuer: "Cisco Networking Academy", icon: "📊", badge: "Data Science" },
-  { title: "Scrum Fundamentals Certified (SFC)", issuer: "SCRUMstudy", icon: "🔄", badge: "Agile" },
-  { title: "Full Stack Development", issuer: "ATAST", icon: "🌐", badge: "Full Stack" },
-  { title: "Effective Leadership", issuer: "HP", icon: "🎯", badge: "Leadership" },
-  { title: "E-Commerce Architecture", issuer: "TuniTech", icon: "🛒", badge: "Web Systems" },
+  { title: "AI Engineer for Data Scientists Associate", issuer: "DataCamp", icon: "🧠", badge: "AI & ML", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1779206907574/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "AI Engineer for Developers Associate", issuer: "DataCamp", icon: "💻", badge: "Applied AI", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1775912629937/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "Mobile Developer - Internship", issuer: "Prologic Tunisie", icon: "📱", badge: "Mobile", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1755775134891/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "Getting Started with AI on Jetson Nano", issuer: "NVIDIA", icon: "⚡", badge: "Edge AI", link: "https://learn.nvidia.com/certificates?id=f29051a2ffc54b28b94690e7611d194c" },
+  { title: "Data Science", issuer: "Cisco Networking Academy", icon: "📊", badge: "Data Science", link: "https://www.credly.com/badges/e16e1f75-dd55-4cd8-9c52-4fa2edac1581/public_url" },
+  { title: "Scrum Fundamentals", issuer: "SCRUMstudy", icon: "🔄", badge: "Agile", link: "https://c46e136a583f7e334124-ac22991740ab4ff17e21daf2ed577041.ssl.cf1.rackcdn.com/Certificate/ScrumFundamentalsCertified-BelhadjmbarekAbderazek-1046869.pdf" },
+  { title: "E-Commerce", issuer: "TuniTech", icon: "🛒", badge: "Web Systems", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1709983931327/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "Full Stack Development", issuer: "ATAST", icon: "🌐", badge: "Full Stack", link: "https://www.linkedin.com/in/abderazek-benhadjmbarek-9650612a3/details/certifications/1707661550514/single-media-viewer/?profileId=ACoAAEkoIh0BgqnBmZaRKA0gXhTSviDEYUVQSWY" },
+  { title: "Effective Leadership", issuer: "HP", icon: "🎯", badge: "Leadership", link: "https://www.life-global.org/certificate/d2bd09c5-f420-4491-bc1d-663440c6dfa5" },
 ];
 
 const tabs = [
@@ -193,6 +198,16 @@ export default function Experience() {
                         <p className="mt-0.5 text-xs text-text-muted">
                           📍 {exp.location}
                         </p>
+                        {exp.link && (
+                          <a
+                            href={exp.link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-accent-emerald transition-colors hover:underline"
+                          >
+                            🔗 {exp.link.label}
+                          </a>
+                        )}
                       </div>
                       <div className="flex-shrink-0 sm:text-right">
                         <span className="rounded-md border border-border bg-surface-light px-2.5 py-1 font-mono text-xs text-text-secondary">
@@ -286,9 +301,21 @@ export default function Experience() {
                         {cert.title}
                       </h4>
                     </div>
-                    <p className="mt-3 border-t border-border/50 pt-3 text-xs font-medium text-accent-emerald">
-                      Issued by {cert.issuer}
-                    </p>
+                    <div className="mt-3 border-t border-border/50 pt-3">
+                      <p className="text-xs font-medium text-accent-emerald">
+                        Issued by {cert.issuer}
+                      </p>
+                      {cert.link && (
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-1.5 inline-flex items-center gap-1 text-xs text-accent-cyan transition-colors hover:underline"
+                        >
+                          View Certificate ↗
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </Reveal>
               ))}

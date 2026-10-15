@@ -104,7 +104,12 @@ export default function About() {
                 Whether building sovereign RAG knowledge simulators for public
                 administration, developing laboratory ERP solutions, or
                 delivering client e-commerce platforms, I am dedicated to
-                writing clean, scalable code and delivering measurable impact.
+                writing clean, scalable code — seeking to deliver{" "}
+                <span className="text-text-primary">
+                  high-impact software engineering and intelligent system
+                  solutions
+                </span>
+                .
               </p>
             </Reveal>
 

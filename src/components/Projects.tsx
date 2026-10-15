@@ -7,81 +7,81 @@ import TiltCard from "@/components/ui/TiltCard";
 
 const projects = [
   {
-    title: "ENA-Mentor AI: Sovereign RAG & Decision Simulator",
-    description:
-      "Built a secure Retrieval-Augmented Generation (RAG) platform and interactive role-play simulator for public administration training. Engineered a local vector search pipeline to accurately synthesize decades of institutional archives and legal texts without AI hallucinations.",
-    tags: ["Python", "LlamaIndex", "Groq (Llama-3)", "CamemBERT", "ChromaDB", "Streamlit", "Docker"],
-    category: "GenAI",
-    metrics: "Local Vector Search · Zero Hallucinations",
-    github: "https://github.com/Abderrazekk",
-    demo: "https://github.com/Abderrazekk",
-    gradient: "from-accent-purple to-accent-pink",
-    featured: true,
-  },
-  {
-    title: "OptiMedLab – Laboratory ERP & AI Platform",
-    description:
-      "Full-stack Enterprise Resource Planning (ERP) solution designed specifically for laboratory environments. Streamlines lab operations from inventory & supplier management to financial tracking and intelligent data interaction with LLaMA 3.",
-    tags: ["React (Vite)", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Python", "Groq", "LLaMA 3", "Docker"],
-    category: "Full Stack",
-    metrics: "Full ERP Lifecycle · LLaMA 3 Integration",
-    github: "https://github.com/Abderrazekk",
-    demo: "https://github.com/Abderrazekk",
-    gradient: "from-accent-cyan to-accent-blue",
-  },
-  {
-    title: "Online Credit Platform & AI Chatbot",
-    description:
-      "Design and implementation of a secure web application for credit management integrating financial simulations, multi-role dashboards, and an interactive support chatbot powered by LLaMA 3.",
-    tags: ["React (Vite)", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Python", "Groq", "LLaMA 3", "Docker"],
-    category: "GenAI",
-    metrics: "Financial Simulations · AI Chatbot",
-    github: "https://github.com/Abderrazekk",
-    demo: "https://github.com/Abderrazekk",
-    gradient: "from-accent-blue to-accent-emerald",
-  },
-  {
-    title: "Shopina – Production MERN E-Commerce Platform",
-    description:
-      "Designed and deployed a production-ready MERN e-commerce platform for a real client. Features Redux Toolkit state, multilingual support (i18n), JWT auth, order and wishlist tracking, SEO optimization, Cloudinary, Docker, and Nginx.",
-    tags: ["React.js", "Vite", "TailwindCSS", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "Docker", "Nginx", "Cloudinary"],
-    category: "Full Stack",
-    metrics: "Production Client Deployment · Multilingual (i18n)",
-    github: "https://github.com/Abderrazekk",
-    demo: "https://github.com/Abderrazekk",
-    gradient: "from-accent-emerald to-teal-500",
-  },
-  {
     title: "Tunisian Guest House Booking Platform",
+    date: "Aug – Sep 2026",
     description:
       "Comprehensive MERN stack platform for reserving guest houses in Tunisia. Features multi-role access (Admin/Client), interactive map-based property search, an intelligent filter chatbot, wishlist management, and dynamic image hosting.",
     tags: ["React (Vite)", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Cloudinary", "JWT"],
     category: "Full Stack",
     metrics: "Map-Based Search · Intelligent Chatbot Filtering",
-    github: "https://github.com/Abderrazekk",
-    demo: "https://github.com/Abderrazekk",
+    github: "https://github.com/Abderrazekk/EstatePro",
     gradient: "from-orange-500 to-accent-purple",
   },
   {
+    title: "Online Credit Platform & AI Chatbot",
+    date: "Apr – May 2026",
+    description:
+      "Design and implementation of a secure web application for credit management integrating financial simulations, multi-role dashboards, and an interactive support chatbot powered by LLaMA 3.",
+    tags: ["React (Vite)", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Python", "Groq", "LLaMA 3", "Ollama", "Docker"],
+    category: "GenAI",
+    metrics: "Financial Simulations · AI Chatbot",
+    github: "https://github.com/Abderrazekk/Plateforme-de-Credit-en-Ligne-avec-Chatbot",
+    gradient: "from-accent-blue to-accent-emerald",
+  },
+  {
+    title: "OptiMedLab – Laboratory ERP & AI Platform",
+    date: "Feb – Apr 2026",
+    description:
+      "Full-stack Enterprise Resource Planning (ERP) solution designed specifically for laboratory environments. Streamlines lab operations from inventory & supplier management to financial tracking and intelligent data interaction with LLaMA 3.",
+    tags: ["React (Vite)", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Python", "Groq", "LLaMA 3", "Ollama", "Docker"],
+    category: "Full Stack",
+    metrics: "Full ERP Lifecycle · LLaMA 3 Integration",
+    github: "https://github.com/Abderrazekk/OptimedLab",
+    gradient: "from-accent-cyan to-accent-blue",
+  },
+  {
+    title: "ENA-Mentor AI: Sovereign RAG & Decision Simulator",
+    date: "Mar – Apr 2026",
+    description:
+      "Built a secure Retrieval-Augmented Generation (RAG) platform and interactive role-play simulator for public administration training. Engineered a local vector search pipeline to accurately synthesize decades of institutional archives and legal texts without AI hallucinations.",
+    tags: ["Python", "LlamaIndex", "Groq (Llama-3)", "CamemBERT", "ChromaDB", "Streamlit", "PyMuPDF", "Docker"],
+    category: "GenAI",
+    metrics: "Local Vector Search · Zero Hallucinations",
+    github: "https://github.com/Abderrazekk/ENA-Mentor-AI",
+    gradient: "from-accent-purple to-accent-pink",
+    featured: true,
+  },
+  {
+    title: "Shopina – Production MERN E-Commerce Platform",
+    date: "Jan – Mar 2026",
+    description:
+      "Designed and deployed a production-ready MERN e-commerce platform for a real client. Features Redux Toolkit state, multilingual support (i18n), JWT auth, order, wishlist and comments tracking, SEO optimization, Cloudinary, Docker, and Nginx.",
+    tags: ["React.js", "Vite", "TailwindCSS", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "JWT", "Docker", "Nginx", "Cloudinary", "i18n"],
+    category: "Full Stack",
+    metrics: "Production Client Deployment · Multilingual (i18n)",
+    demo: "https://www.shopina.tn",
+    gradient: "from-accent-emerald to-teal-500",
+  },
+  {
     title: "TuniSwipe – Swipe-Based Matching App",
+    date: "Oct – Dec 2025",
     description:
       "Cross-platform mobile application with an intuitive swipe interface for matching, including real-time chat, profiles, and algorithmic partner suggestions.",
     tags: ["Flutter", "Dart", "Node.js", "Express.js", "MongoDB", "Docker"],
     category: "Mobile",
     metrics: "Real-Time Chat · Algorithmic Matching",
-    github: "https://github.com/Abderrazekk",
-    demo: "https://github.com/Abderrazekk",
+    github: "https://github.com/Abderrazekk/TuniSwipe",
     gradient: "from-accent-pink to-accent-purple",
   },
   {
     title: "AI Bone Fracture Detection System",
+    date: "Feb – Mar 2024",
     description:
-      "Deep learning computer vision system for X-ray fracture detection and localization, improving diagnostic accuracy through medical image processing and transfer learning classification methods.",
+      "Machine learning system for X-ray fracture detection and localization, improving diagnostic accuracy through medical image processing and classification methods.",
     tags: ["Python", "PyTorch", "Keras", "PIL", "Matplotlib", "Seaborn"],
     category: "CV",
     metrics: "Deep Learning · Medical Image Processing",
-    github: "https://github.com/Abderrazekk",
-    demo: "https://github.com/Abderrazekk",
+    github: "https://github.com/Abderrazekk/AI-Bone-Fracture-Detection",
     gradient: "from-cyan-500 to-accent-cyan",
   },
 ];
@@ -158,9 +158,14 @@ export default function Projects() {
                     </span>
                   )}
 
-                  <span className="mb-4 inline-block w-fit rounded-full bg-accent-cyan/10 px-3 py-1 font-mono text-xs text-accent-cyan">
-                    {project.category}
-                  </span>
+                  <div className="mb-4 flex flex-wrap items-center gap-2">
+                    <span className="inline-block w-fit rounded-full bg-accent-cyan/10 px-3 py-1 font-mono text-xs text-accent-cyan">
+                      {project.category}
+                    </span>
+                    <span className="font-mono text-xs text-text-muted">
+                      {project.date}
+                    </span>
+                  </div>
 
                   <h3 className="mb-3 text-xl font-semibold text-text-primary transition-colors group-hover:text-accent-cyan">
                     {project.title}
@@ -192,35 +197,39 @@ export default function Projects() {
 
                   {/* Links */}
                   <div className="mt-auto flex gap-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-accent-cyan"
-                      aria-label={`View code for ${project.title}`}
-                    >
-                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                      </svg>
-                      Code
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/link flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-accent-purple"
-                      aria-label={`View live demo for ${project.title}`}
-                    >
-                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                      Live Demo
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-accent-cyan"
+                        aria-label={`View code for ${project.title}`}
+                      >
+                        <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        Code
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-accent-purple"
+                        aria-label={`View live demo for ${project.title}`}
+                      >
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                        Live Demo
+                      </a>
+                    )}
                   </div>
                 </div>
                 </div>
